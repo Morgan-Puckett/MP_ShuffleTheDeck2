@@ -5,33 +5,39 @@
 
 Option Strict On
 Option Explicit On
-Option Compare Binary
+Option Compare Text
 
 Module MP_ShuffleTheDeck2
 
     Sub Main()
-        'Dim varibles to create array & random numbers to blank out 
-        Dim cardChosen(3, 13) As Boolean
-        Dim trys As Integer
-        Dim i As Integer = 0
-        Dim letter As Integer
-        Dim number As Integer
-        For i = 1 To 25
+        Dim quit As String
+        Do
+            'Dim varibles to create array & random numbers to blank out 
+            Dim cardChosen(3, 13) As Boolean
+            Dim trys As Integer
+            Dim i As Integer = 0
+            Dim letter As Integer
+            Dim number As Integer
 
-            Do
-                'this marks specific values in array true (Blank)
-                letter = RandomNumberInRange(3)
-                number = RandomNumberInRange(13)
-                trys += 1
-            Loop While cardChosen(letter, number) = True
-            'Enablt this to see if/when a number gets redrawn
-            'Console.WriteLine($"draw {i} took {trys}")
-            trys = 0
-            cardChosen(letter, number) = True
-        Next
+            For i = 1 To 25
 
-        DisplayCard(cardChosen)
-        Console.ReadLine()
+                Do
+                    'this marks specific values in array true (Blank)
+                    letter = RandomNumberInRange(3)
+                    number = RandomNumberInRange(13)
+                    trys += 1
+                Loop While cardChosen(letter, number) = True
+                'Enablt this to see if/when a number gets redrawn
+                'Console.WriteLine($"draw {i} took {trys}")
+                trys = 0
+                cardChosen(letter, number) = True
+            Next
+
+            DisplayCard(cardChosen)
+            Console.WriteLine("Press enter to shuffle, ""Q"" to quit.")
+            quit = Console.ReadLine()
+        Loop Until quit = "q"
+
     End Sub
     Sub DisplayCard(ByRef cardChosen(,) As Boolean)
         'these string arrays will create a header for the table 
