@@ -1,4 +1,8 @@
-﻿
+﻿'Morgan Puckett
+'RCET 0265
+'Spring 2022
+'Shuffle the Deck
+
 Option Strict On
 Option Explicit On
 Option Compare Binary
